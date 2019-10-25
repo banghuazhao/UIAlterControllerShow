@@ -9,6 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
     lazy var demoButton: UIButton = {
         let button = UIButton()
         button.setTitle("Show Demo", for: .normal)
@@ -22,7 +23,7 @@ class ViewController: UIViewController {
         view.addSubview(demoButton)
         demoButton.frame = CGRect(x: (UIScreen.main.bounds.width - 100) / 2, y: (UIScreen.main.bounds.height - 40) / 2, width: 100, height: 40)
     }
-
+    
     deinit {
         print(UIApplication.shared.windows.count)
     }
@@ -30,14 +31,15 @@ class ViewController: UIViewController {
     @objc func showDemo() {
         let alterController = CustomAlterController(title: "Title", message: "Message...", preferredStyle: .alert)
         alterController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        alterController.showWithAnimation()
+        alterController.show()
     }
 }
 
 class CustomAlterController: UIAlertController {
+    
     var window: UIWindow?
-
-    func showWithAnimation() {
+    
+    func show() {
         window = UIWindow()
         window?.backgroundColor = .clear
         window?.rootViewController = UIViewController()
